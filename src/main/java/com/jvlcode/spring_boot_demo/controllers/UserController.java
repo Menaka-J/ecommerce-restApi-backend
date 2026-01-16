@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     @GetMapping
-    //testing /api/users works
+    //testing /api/users works in url
     public String getUsers() {
         return "Hello from Menaka";
     }
