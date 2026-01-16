@@ -1,5 +1,6 @@
 package com.jvlcode.spring_boot_demo.controllers;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -7,9 +8,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/users")
 public class UserController {
 
+    @GetMapping
     //testing /api/users works
     public String getUsers() {
-        return "Hello from Menaka"
+        return "Hello from Menaka";
     }
 
 
