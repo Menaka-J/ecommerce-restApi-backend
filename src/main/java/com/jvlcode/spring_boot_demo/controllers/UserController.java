@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     //testing /api/users works
+    public String getUsers() {
+        return "Hello from Menaka"
+    }
 
 
 }
