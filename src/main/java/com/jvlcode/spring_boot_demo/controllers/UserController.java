@@ -18,6 +18,7 @@ public class UserController {
 //        return "Hello from Menaka";
 //    }
 
+    //for showing users in /ap/users
     @GetMapping
     public List<User> getUsers() {
         return Arrays.asList(new User(1L, "menaka", "men@gmail.com"), new User(2L, "meena", "meena@gmail.com"));
