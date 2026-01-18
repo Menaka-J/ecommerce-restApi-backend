@@ -41,4 +41,4 @@ public class UserController {
 }
 
 
-//@RequestBody annoation is used to get the data user enter [in postman we enter json data]
+//@RequestBody annoation is used to get the data user enter [in postman we enter JSON data]
