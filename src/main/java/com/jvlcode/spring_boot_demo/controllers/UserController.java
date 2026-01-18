@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/users")
@@ -24,7 +25,7 @@ public class UserController {
 //        return "Hello from Menaka";
 //    }
 
-    //for showing users in /ap/users
+    //for showing all users in /api/users
     @GetMapping
     public List<UserEntity> getUsers() {
 //        return Arrays.asList(new User(1L, "menaka", "men@gmail.com"), new User(2L, "meena", "meena@gmail.com"));
@@ -37,7 +38,22 @@ public class UserController {
     public UserEntity createUser(@RequestBody UserEntity user) {
         return userRepository.save(user); // it will save and return the data user entered [post data]
     }
+
+    //for getting user by id
+    @GetMapping("/{id}")  //tells the url has id in end
+    public Optional<UserEntity> getUserById(@PathVariable Long id) {
+        return userRepository.findById(id);
+    }
 }
 
 
-//@RequestBody annoation is used to get the data user enter [in postman we enter JSON data]
+//@RequestBody annoation =>
+//                          is used to get the data user enter [in postman we enter JSON data]
+
+
+//@PathVariable annotation =>
+//                          is used to get the GET url id
+
+
+//Optional<UserEntity>
+//                      => if there is no data to return [like findbyig here] , it will  return NULL that's optional
