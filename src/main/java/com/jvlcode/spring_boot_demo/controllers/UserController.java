@@ -6,6 +6,7 @@ import com.jvlcode.spring_boot_demo.exceptions.ResourceNotFoundException;
 import com.jvlcode.spring_boot_demo.model.User;
 import com.jvlcode.spring_boot_demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
@@ -54,6 +55,14 @@ public class UserController {
         userData.setEmail(user.getEmail()); //change updated email
         return userRepository.save(userData); //returning updated user and saving it
     }
+
+    //delete user by id
+    @DeleteMapping("/{id}") //tells URL come with ID field
+    public ResponseEntity<?> deleteUser(@PathVariable Long id) { //get ID from URL
+        UserEntity userData = userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found with id :" + id)); //find user with that ID and save that user in a var
+        userRepository.delete(userData); //delete that user
+        return ResponseEntity.ok().build(); //retrning ok [means deleted ]
+    }
 }
 
 
@@ -68,6 +77,9 @@ public class UserController {
 //Optional<UserEntity>
 //                      => if there is no data to return [like findbyig here] , it will  return NULL that's optional
 //                              it will show error if no optional without try catch class
+
+//ResponseEntity<?> => CLASS FOR RESPONSE HANDLING AND STATS CODE
+//                       means any type of response[ok,created,deleted , etc..]
 
 
 //DO ALL CRUD OPERATION IN CONTROLLERS PACKAGE
