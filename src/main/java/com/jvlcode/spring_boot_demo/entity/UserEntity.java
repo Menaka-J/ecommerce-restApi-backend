@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 @Table(name = "users") //will create table "users" in ds for use
 public class UserEntity {
 
-    @Id
+    @Id //for generating unique for id for each row in db
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
