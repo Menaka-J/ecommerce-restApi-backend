@@ -57,3 +57,4 @@ public class UserController {
 
 //Optional<UserEntity>
 //                      => if there is no data to return [like findbyig here] , it will  return NULL that's optional
+//                              it will show error if no optional without try catch class
