@@ -8,3 +8,4 @@ public class UserRepository extends JpaRepository<UserEntity, Long> {
 
 //repository is used between controller and entity
 //simplify CRUD operation instead of sql queries
+//have functions like save , find, delete for ease use
