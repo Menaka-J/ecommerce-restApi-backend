@@ -1,4 +1,6 @@
 package com.jvlcode.spring_boot_demo.repository;
 
-public class UserRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public class UserRepository extends JpaRepository<> {
 }
