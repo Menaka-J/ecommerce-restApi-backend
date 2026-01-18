@@ -1,5 +1,6 @@
 package com.jvlcode.spring_boot_demo.controllers;
 
+import com.jvlcode.spring_boot_demo.entity.UserEntity;
 import com.jvlcode.spring_boot_demo.model.User;
 import com.jvlcode.spring_boot_demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +27,9 @@ public class UserController {
 
     //for showing users in /ap/users
     @GetMapping
-    public List<User> getUsers() {
-        return Arrays.asList(new User(1L, "menaka", "men@gmail.com"), new User(2L, "meena", "meena@gmail.com"));
+    public List<UserEntity> getUsers() {
+//        return Arrays.asList(new User(1L, "menaka", "men@gmail.com"), new User(2L, "meena", "meena@gmail.com"));
+        return userRepository.findAll();
     }
 
 }
