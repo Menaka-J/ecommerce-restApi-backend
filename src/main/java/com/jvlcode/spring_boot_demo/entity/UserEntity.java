@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class UserEntity {
 
     @Id //for generating unique for id for each row in db
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //tell to create unique id for id generation
     private Long id;
     private String name;
     private String email;
