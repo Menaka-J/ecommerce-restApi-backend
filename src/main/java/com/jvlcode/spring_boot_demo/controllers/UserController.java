@@ -35,7 +35,7 @@ public class UserController {
     //for creating user in db
     @PostMapping
     public UserEntity createUser(@RequestBody UserEntity user) {
-        System.out.println("POST called for creatiion");
+        System.out.println("User data:" + user.getName() + "," + user.getEmail());
         return null;
     }
 }
