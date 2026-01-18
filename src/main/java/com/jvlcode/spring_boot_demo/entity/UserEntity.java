@@ -3,7 +3,7 @@ package com.jvlcode.spring_boot_demo.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "users")
+@Table(name = "users") //will create table "users" in ds for use
 public class UserEntity {
 
     @Id
