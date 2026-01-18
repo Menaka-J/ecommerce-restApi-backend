@@ -2,6 +2,7 @@ package com.jvlcode.spring_boot_demo.controllers;
 
 import ch.qos.logback.core.net.SyslogOutputStream;
 import com.jvlcode.spring_boot_demo.entity.UserEntity;
+import com.jvlcode.spring_boot_demo.exceptions.ResourceNotFoundException;
 import com.jvlcode.spring_boot_demo.model.User;
 import com.jvlcode.spring_boot_demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +43,7 @@ public class UserController {
     //for getting user by id
     @GetMapping("/{id}")  //tells the url has id in end
     public UserEntity getUserById(@PathVariable Long id) {
-        return userRepository.findById(id);
+        return userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found with id " + id));
     }
 }
 
