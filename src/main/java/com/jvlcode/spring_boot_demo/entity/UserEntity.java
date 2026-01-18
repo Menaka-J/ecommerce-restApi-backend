@@ -21,6 +21,7 @@ public class UserEntity {
     }
 
 
+    //default constructor
     public UserEntity() {
         super();
     }
