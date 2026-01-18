@@ -28,4 +28,4 @@ public class UserEntity {
 }
 
 //entity is like table creating annotation
-it will create
+//it will create table in db with defined columns
