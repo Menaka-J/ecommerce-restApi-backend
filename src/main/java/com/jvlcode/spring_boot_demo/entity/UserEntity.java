@@ -26,3 +26,6 @@ public class UserEntity {
         super();
     }
 }
+
+//entity is like table creating annotation
+it will create
