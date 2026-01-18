@@ -5,6 +5,7 @@ import com.jvlcode.spring_boot_demo.model.User;
 import com.jvlcode.spring_boot_demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,6 +35,7 @@ public class UserController {
 
 
     //for creating user in db
+    @PostMapping
     public UserEntity createUser() {
 
     }
