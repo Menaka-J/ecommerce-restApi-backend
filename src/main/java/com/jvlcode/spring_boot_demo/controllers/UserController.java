@@ -39,5 +39,6 @@ public class UserController {
     @PostMapping
     public UserEntity createUser() {
         System.out.println("POST called for creatiion");
+        return null;
     }
 }
