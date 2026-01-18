@@ -41,7 +41,7 @@ public class UserController {
 
     //for getting user by id
     @GetMapping("/{id}")  //tells the url has id in end
-    public Optional<UserEntity> getUserById(@PathVariable Long id) {
+    public UserEntity getUserById(@PathVariable Long id) {
         return userRepository.findById(id);
     }
 }
