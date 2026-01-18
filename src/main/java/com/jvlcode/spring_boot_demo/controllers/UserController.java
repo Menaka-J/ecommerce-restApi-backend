@@ -45,6 +45,15 @@ public class UserController {
     public UserEntity getUserById(@PathVariable Long id) {
         return userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found with id " + id));
     }
+
+    //for updating user by id
+    @PutMapping("/{id}") //tells url come with a field called ID
+    public UserEntity updateUser(@PathVariable Long id, @RequestBody UserEntity user) { //Path => get id from url, reqbody => get user JSON data from put request
+        UserEntity userData = userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found with this id: " + id)); //fing and save user with that id
+        userData.setName(user.getName()); //change name updated
+        userData.setEmail(user.getEmail()); //change updated email
+        return userRepository.save(userData); //returning updated user and saving it
+    }
 }
 
 
@@ -59,3 +68,6 @@ public class UserController {
 //Optional<UserEntity>
 //                      => if there is no data to return [like findbyig here] , it will  return NULL that's optional
 //                              it will show error if no optional without try catch class
+
+
+//DO ALL CRUD OPERATION IN CONTROLLERS PACKAGE
