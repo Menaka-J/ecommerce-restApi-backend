@@ -5,10 +5,7 @@ import com.jvlcode.spring_boot_demo.entity.UserEntity;
 import com.jvlcode.spring_boot_demo.model.User;
 import com.jvlcode.spring_boot_demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -37,8 +34,11 @@ public class UserController {
 
     //for creating user in db
     @PostMapping
-    public UserEntity createUser() {
+    public UserEntity createUser(@RequestBody UserEntity user) {
         System.out.println("POST called for creatiion");
         return null;
     }
 }
+
+
+//@RequestBody annoation is used to get the data user enter [in postman we enter json data]
