@@ -32,4 +32,9 @@ public class UserController {
         return userRepository.findAll();
     }
 
+
+    //for creating user in db
+    public UserEntity createUser() {
+
+    }
 }
