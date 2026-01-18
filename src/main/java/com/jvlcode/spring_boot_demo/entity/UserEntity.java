@@ -12,6 +12,7 @@ public class UserEntity {
     private String name;
     private String email;
 
+    //    constructor for initialization
     public UserEntity(Long id, String name, String email) {
         super();
         this.id = id;
