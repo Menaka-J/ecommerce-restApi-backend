@@ -20,4 +20,8 @@ public class UserEntity {
         this.email = email;
     }
 
+
+    public UserEntity() {
+        super();
+    }
 }
