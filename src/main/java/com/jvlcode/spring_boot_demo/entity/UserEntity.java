@@ -20,6 +20,7 @@ public class UserEntity {
         this.email = email;
     }
 
+    //getters and setters for all 3 var
     public Long getId() {
         return id;
     }
