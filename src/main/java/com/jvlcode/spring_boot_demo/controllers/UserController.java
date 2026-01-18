@@ -1,5 +1,6 @@
 package com.jvlcode.spring_boot_demo.controllers;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import com.jvlcode.spring_boot_demo.entity.UserEntity;
 import com.jvlcode.spring_boot_demo.model.User;
 import com.jvlcode.spring_boot_demo.repository.UserRepository;
@@ -37,6 +38,6 @@ public class UserController {
     //for creating user in db
     @PostMapping
     public UserEntity createUser() {
-
+        System.out.println("POST called for creatiion");
     }
 }
