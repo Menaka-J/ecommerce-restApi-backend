@@ -73,10 +73,11 @@
         <!--        for springboot security -->
         <!-- Source: https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security -->
         <!-- Source: https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security -->
+        <!-- Source: https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
-            <version>3.5.7</version>
+            <version>4.0.1</version>
             <scope>compile</scope>
         </dependency>
 
