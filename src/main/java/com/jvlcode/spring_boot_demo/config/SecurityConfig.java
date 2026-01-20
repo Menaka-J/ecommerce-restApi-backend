@@ -8,6 +8,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -27,18 +29,25 @@ public class SecurityConfig {
 
     //In-memeory AUth page details for learning purpose
     @Bean
-    public UserDetailsService userDetailsService() {
+    public UserDetailsService userDetailsService(PasswordEncoder passwordEncoder) {
         UserDetails user = User.withUsername("alice") //UserDetails [build-in class for Auth learning], User[userdeatils object]
-                .password("alice123")
+                .password(passwordEncoder.encode("user123"))
                 .roles("USER")
                 .build();
 
         UserDetails admin = User.withUsername("zack")
-                .password("admin123")
+                .password(passwordEncoder.encode("admin123"))
                 .roles("ADMIN")
                 .build();
 
         return new InMemoryUserDetailsManager(user, admin); //creating in-memory login details
+    }
+
+
+    //for encrypting password
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 
 }
