@@ -7,6 +7,7 @@ import com.jvlcode.spring_boot_demo.model.User;
 import com.jvlcode.spring_boot_demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
@@ -20,6 +21,9 @@ public class UserController {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
 //    @GetMapping
 //    //testing /api/users works in url
@@ -38,6 +42,7 @@ public class UserController {
     //for creating user in db
     @PostMapping
     public UserEntity createUser(@RequestBody UserEntity user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword())); //encoding password
         return userRepository.save(user); // it will save and return the data user entered [post data]
     }
 
