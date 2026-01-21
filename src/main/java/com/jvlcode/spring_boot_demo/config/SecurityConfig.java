@@ -26,8 +26,8 @@ public class SecurityConfig {
                                 .requestMatchers("/api/users/**").authenticated() //tells we only want auth for this url's
                                 .requestMatchers("/").permitAll()
                                 .anyRequest().permitAll() //tells we permit all to visit for this url's[here Home page]
-                ).formLogin(form -> form.permitAll().defaultSuccessUrl("/dashboard"))
-                .csrf(csrf -> csrf.disable()); //permit default login page , page after login
+                ).formLogin(form -> form.permitAll().defaultSuccessUrl("/dashboard")) //permit default login page , page after login
+                .csrf(csrf -> csrf.disable()); //for pOST permit
         return http.build(); //tells SB we did this so build it
     }
 
