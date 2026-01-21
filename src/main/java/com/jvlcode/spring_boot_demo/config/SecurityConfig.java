@@ -1,5 +1,6 @@
 package com.jvlcode.spring_boot_demo.config;
 
+import com.jvlcode.spring_boot_demo.services.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -35,17 +36,19 @@ public class SecurityConfig {
     //In-memeory AUth page details for learning purpose
     @Bean
     public UserDetailsService userDetailsService(PasswordEncoder passwordEncoder) {
-        UserDetails user = User.withUsername("alice") //UserDetails [build-in class for Auth learning], User[userdeatils object]
-                .password(passwordEncoder.encode("user123"))
-                .roles("USER")
-                .build();
+//        UserDetails user = User.withUsername("alice") //UserDetails [build-in class for Auth learning], User[userdeatils object]
+//                .password(passwordEncoder.encode("user123"))
+//                .roles("USER")
+//                .build();
+//
+//        UserDetails admin = User.withUsername("zack")
+//                .password(passwordEncoder.encode("admin123"))
+//                .roles("ADMIN")
+//                .build();
+//
+//        return new InMemoryUserDetailsManager(user, admin); //creating in-memory login details
 
-        UserDetails admin = User.withUsername("zack")
-                .password(passwordEncoder.encode("admin123"))
-                .roles("ADMIN")
-                .build();
-
-        return new InMemoryUserDetailsManager(user, admin); //creating in-memory login details
+        return new CustomUserDetailsService();
     }
 
 
