@@ -3,6 +3,7 @@ package com.jvlcode.spring_boot_demo.config;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
@@ -20,7 +21,9 @@ public class SecurityConfig {
     @Bean //using Bean , this class can be used in others code also
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception { //get http which has all url
         http.authorizeHttpRequests(authz ->
-                authz.requestMatchers("/api/users/**").authenticated() //tells we only want auth for this url's
+                authz
+                        .requestMatchers(HttpMethod.POST, "/api/users").permitAll() //permit sign up only
+                        .requestMatchers("/api/users/**").authenticated() //tells we only want auth for this url's
                         .requestMatchers("/").permitAll()
                         .anyRequest().permitAll() //tells we permit all to visit for this url's[here Home page]
         ).formLogin(form -> form.permitAll().defaultSuccessUrl("/dashboard")); //permit default login page , page after login
