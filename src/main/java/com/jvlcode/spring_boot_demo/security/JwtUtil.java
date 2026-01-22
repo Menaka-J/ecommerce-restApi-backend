@@ -1,9 +1,12 @@
 package com.jvlcode.spring_boot_demo.security;
 
+import io.jsonwebtoken.Jwt;
+import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.crypto.SecretKey;
+import java.util.Date;
 
 public class JwtUtil {
 
@@ -13,6 +16,13 @@ public class JwtUtil {
 
 
     public String generateToken(UserDetails userDetails) {
+        //building JWT token with 1 hour as expiration
+        return Jwts.builder()
+                .subject(userDetails.getUsername())
+                .issuedAt(new Date())
+                .expiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60))
+                .signWith(SECRET_KEY, Jwts.SIG.HS256)
+                .compact();
 
     }
 
