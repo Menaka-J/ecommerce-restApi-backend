@@ -11,6 +11,7 @@ import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -34,7 +35,8 @@ public class SecurityConfig {
                                 .requestMatchers("/").permitAll()
                                 .anyRequest().permitAll() //tells we permit all to visit for this url's[here Home page]
                 ).formLogin(form -> form.permitAll().defaultSuccessUrl("/dashboard")) //permit default login page , page after login
-                .csrf(csrf -> csrf.disable()); //for pOST permit
+                .csrf(csrf -> csrf.disable()) //for pOST permit
+                .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS)); //telling no http sessions
         return http.build(); //tells SB we did this so build it
     }
 
