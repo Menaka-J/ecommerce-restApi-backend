@@ -81,6 +81,8 @@
             <scope>compile</scope>
         </dependency>
 
+        <!--         for JWT authentication -->
+
     </dependencies>
 
     <build>
