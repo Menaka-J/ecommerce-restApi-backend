@@ -1,5 +1,6 @@
 package com.jvlcode.spring_boot_demo.config;
 
+import com.jvlcode.spring_boot_demo.security.JwtFilter;
 import com.jvlcode.spring_boot_demo.services.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.Bean;
@@ -19,12 +20,15 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import java.util.List;
 
 @Configuration //tell we are ging to add imp config's
 @EnableWebSecurity //used for enabling security
 public class SecurityConfig {
+
+    private JwtFilter jwtFilter;
 
     @Bean //using Bean , this class can be used in others code also
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception { //get http which has all url
@@ -37,7 +41,9 @@ public class SecurityConfig {
                 )
 //                .formLogin(form -> form.permitAll().defaultSuccessUrl("/dashboard")) //permit default login page , page after login
                 .csrf(csrf -> csrf.disable()) //for pOST permit
-                .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS)); //telling no http sessions
+                .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class); //telling no http sessions
+
         return http.build(); //tells SB we did this so build it
     }
 
