@@ -28,4 +28,18 @@ public class JwtUtil {
 
     }
 
+    //for validating token
+    public void validateToken() {
+
+    }
+
+    public String extractUserName(String token) {
+        return Jwts.parser()
+                .verifyWith(SECRET_KEY)
+                .build()
+                .parseSignedClaims(token)
+                .getPayload()
+                .getSubject();
+    }
+
 }
