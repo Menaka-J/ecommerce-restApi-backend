@@ -14,6 +14,7 @@ import org.springframework.security.core.Authentication;
 
 import java.util.Map;
 
+//for JWT authentication
 @RestController
 @RequestMapping("/auth") //localhost:8080/auth
 public class AuthController {
