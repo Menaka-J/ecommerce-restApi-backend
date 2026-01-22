@@ -34,7 +34,7 @@ public class JwtFilter extends OncePerRequestFilter {
             return;
         }
 
-        String token authHeader.substring(7);
+        String token = authHeader.substring(7);
 
         try {
 

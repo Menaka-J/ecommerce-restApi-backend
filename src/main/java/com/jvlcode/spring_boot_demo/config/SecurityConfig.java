@@ -2,6 +2,7 @@ package com.jvlcode.spring_boot_demo.config;
 
 import com.jvlcode.spring_boot_demo.security.JwtFilter;
 import com.jvlcode.spring_boot_demo.services.CustomUserDetailsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,6 +29,7 @@ import java.util.List;
 @EnableWebSecurity //used for enabling security
 public class SecurityConfig {
 
+    @Autowired
     private JwtFilter jwtFilter;
 
     @Bean //using Bean , this class can be used in others code also
