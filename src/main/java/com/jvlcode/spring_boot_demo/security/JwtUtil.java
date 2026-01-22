@@ -29,8 +29,8 @@ public class JwtUtil {
     }
 
     //for validating token
-    public void validateToken() {
-
+    public boolean validateToken(String token, UserDetails userDetails) {
+        return extractUserName(token).equals(userDetails.getUsername());
     }
 
     public String extractUserName(String token) {
