@@ -19,7 +19,9 @@ public class AuthController {
 
         //authenticate the user
         Authentication authentication = authManager
-                .authenticate(new UsernamePasswordAuthenticationToken(user.get));
+                .authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword())); //tells JWT to authenticate or not
+
+
     }
 
 }
