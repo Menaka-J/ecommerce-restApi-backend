@@ -1,16 +1,25 @@
 package com.jvlcode.spring_boot_demo.controllers;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.jvlcode.spring_boot_demo.entity.UserEntity;
+import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth") //localhost:8080/auth
 public class AuthController {
 
-    @GetMapping("/login") /// auth/login
-    public void login(){
+    @Autowired
+    private AuthenticationManager authManager;
 
+    @PostMapping("/login")     // auth/login
+    public void login(@RequestBody UserEntity user) {
+
+        //authenticate the user
+        Authentication authentication = authManager
+                .authenticate(new UsernamePasswordAuthenticationToken(user.get));
     }
 
 }
